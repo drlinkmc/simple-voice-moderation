@@ -1,0 +1,28 @@
+name: SimpleVoiceModeration
+version: ${project.version}
+main: dev.drlink0.simplevoicemoderation.SimpleVoiceModerationPlugin
+api-version: '1.21'
+author: drlink0
+description: Simple moderation utilities for a Paper Minecraft server.
+depend:
+  - voicechat
+softdepend:
+  - Essentials
+commands:
+  svm:
+    description: SimpleVoiceModeration commands.
+    usage: |
+      /svm - Show plugin info
+      /svm vcmute <player> - Voice-mute a player
+      /svm vcunmute <player> - Voice-unmute a player
+    permission: simplevoicemoderation.command
+permissions:
+  simplevoicemoderation.command:
+    description: Allows use of the /svm command.
+    default: op
+  simplevoicemoderation.group.password.bypass:
+    description: Allows joining Simple Voice Chat groups without knowing the password.
+    default: false
+  simplevoicemoderation.vcmute:
+    description: Allows voice-muting and voice-unmuting players.
+    default: op
