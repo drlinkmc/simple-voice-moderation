@@ -151,6 +151,20 @@ class SimpleVoiceModerationPluginTest {
     }
 
     @Test
+    void onCommand_vcmute_offlinePlayer_showsError() {
+        when(command.getName()).thenReturn("svm");
+        when(sender.hasPermission("simplevoicemoderation.vcmute")).thenReturn(true);
+        when(pluginInstance.getServer()).thenReturn(server);
+        when(server.getPlayer("OfflinePlayer")).thenReturn(null);
+
+        boolean result = pluginInstance.onCommand(sender, command, "svm",
+                new String[]{"vcmute", "OfflinePlayer"});
+
+        assertTrue(result);
+        verify(sender).sendMessage(any(Component.class));
+    }
+
+    @Test
     void onCommand_unknownSubcommand_showsError() {
         when(command.getName()).thenReturn("svm");
 
